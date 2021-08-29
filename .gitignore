@@ -1,0 +1,15 @@
+# gitignore
+.env
+.envrc
+
+*.zip
+*.ova
+
+*.json
+
+**/http/**
+!**/http/readme.md
+
+packer_cache/
+
+!templates/*

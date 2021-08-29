@@ -1,0 +1,12 @@
+{
+  "vcenter_server": "${GOVC_URL}",
+  "username": "${GOVC_USERNAME}",
+  "password": "${GOVC_PASSWORD}",
+  "datastore": "${GOVC_DATASTORE}",
+  "folder": "${GOVC_FOLDER}",
+  "host": "${GOVC_HOST_IP}",
+  "cluster": "${GOVC_CLUSTER}",
+  "network": "${GOVC_NETWORK}",
+  "ssh_username": "${VM_USER}",
+  "ssh_password": "${VM_PASS}"
+}

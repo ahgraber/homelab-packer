@@ -1,0 +1,80 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    # Stop ssh for packer
+    - sudo systemctl stop ssh
+    - sudo systemctl stop open-vm-tools
+  locale: en_US
+  keyboard:
+      layout: en
+      variant: us
+  packages:
+    - apt-transport-https
+    - ca-certificates
+    - cloud-init
+    - curl
+    - debconf
+    - debconf-i18n
+    - gnupg
+    - net-tools
+    - openssh-server
+    - open-vm-tools
+    - python
+    - python3-apt
+    - python3-pip
+  update: yes
+  user-data:
+    users:
+      # - default  ## do not use default 'ubuntu' user
+      - name: ${VM_USER}
+        groups: [adm, audio, cdrom, dialout, floppy, video, plugdev, dip, netdev, sudo, wheel]
+        lock-passwd: false
+        passwd: ${CRYPTED_PASS} # Password in hashed format
+        shell: /bin/bash
+        sudo:
+          - 'ALL=(ALL) NOPASSWD:ALL'
+        ssh-authorized-keys:
+          - ${SSH_ID}
+    disable_root: true
+    timezone: "America/New_York"
+    ntp:
+      enabled: true
+      servers:
+        - ${NTP}
+    package_update: false
+    package_upgrade: false
+    packages:
+      - acl
+      - at
+      - bzip2
+      - git
+      - gzip
+      - htop
+      - iproute2
+      - passwd
+      - nfs-common
+      - nmap
+      - rsync
+      - sudo
+      - tar
+      - tmux
+      - traceroute
+      - tree
+      - unattended-upgrades
+      - unzip
+      - vim
+      - wget
+      - xz-utils
+    # write_files:
+      # - path: /usr/local/bin/example-script.sh
+      #   content: |
+      #     #!/bin/bash
+      #     echo "Hello world!"
+    runcmd:
+      # - 'sudo bash /usr/local/bin/example-script.sh'
+      # - 'touch /home/PACKER_CLOUDINIT_COMPLETE'
+    final_message: "Packer cloud-init complete"
+  # late-commands:
+  #   ### you need to specify this as `curtin in-target --target=/target -- $shell_command`
+  #   - 'cloud-init clean -s -l'
