@@ -1,4 +1,6 @@
 # gitignore
+.DS_STORE
+
 .env
 .envrc
 
