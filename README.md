@@ -6,9 +6,9 @@ Images can be [used with terraform](https://github.com/ahgraber/homelab-terrafor
 
 This repo builds 3 images, initially set up using `cloud-init` and then further customized using scripts during packer provisioning:
 
-* `ubuntu_2004-docker`: ubuntu 20.04 LTS with docker installed and some other standard packages (see [cloud-init](./templates/user-data) for details)
-* `ubuntu_2004-k8s-nodhcp`: ubuntu_2004-docker image with iscsi packages set up and all netplan configurations removed
-* `ubuntu_2004-k8s-cloudinit-ready`: ubuntu_2004-k8s-nodhcp with cloud-init cleaned and ready for re-initialization
+- `ubuntu_2004-docker`: ubuntu 20.04 LTS with docker installed and some other standard packages (see [cloud-init](./templates/user-data) for details)
+- `ubuntu_2004-k8s-nodhcp`: ubuntu_2004-docker image with iscsi packages set up and all netplan configurations removed
+- `ubuntu_2004-k8s-cloudinit-ready`: ubuntu_2004-k8s-nodhcp with cloud-init cleaned and ready for re-initialization
 
 ## [Preparation](docs/1%20-%20prerequisites.md)
 
