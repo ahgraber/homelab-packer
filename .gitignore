@@ -15,3 +15,4 @@
 packer_cache/
 
 !templates/*
+!ubuntu_2004/*.json
